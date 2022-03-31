@@ -1,0 +1,18 @@
+.promo{
+  background-color: rgba(92, 92, 92, 1);
+}
+.promo__banner{
+  max-width: 730px;
+  margin: 0 auto;
+  background-image: url('../../images/header__banner.svg');
+  background-repeat: no-repeat;
+  background-position: center 82px;
+  padding: 184px 0 224px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+}

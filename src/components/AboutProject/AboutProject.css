@@ -1,0 +1,61 @@
+.project{
+  padding: 0 70px;
+  font-family: 'Inter';
+  font-style: normal;
+  letter-spacing: -0.04em;
+}
+
+.project__title{
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  padding: 110px 0 23px;
+  border-bottom: 1px black solid;
+  margin: 0;
+}
+
+.project__grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 40px;
+  grid-row-gap: 26px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  margin-top: 70px;
+}
+
+.project__element{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: pre-wrap;
+  overflow: auto;
+}
+
+.project__process{
+  display: grid;
+  margin: 110px 0;
+  text-align: center;
+  grid-row-gap: 14px;
+  grid-template-columns: 1fr 4fr;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.project__process-first{
+  flex-grow: 1;
+  padding: 9px 0;
+  background-color: #2BE080;
+}
+
+.project__process-second{
+  flex-grow: 4;
+  padding: 9px 0;
+  background-color: #F2F2F2;
+}
+
+.project__process-name{
+  color: rgba(160, 160, 160, 1);
+}

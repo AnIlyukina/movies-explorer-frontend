@@ -1,0 +1,22 @@
+.navigation{
+  background: #F5F5F5;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation__links{
+  max-width: 276px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 0;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.navigation__link{
+  border-bottom: 1px black solid;
+}
