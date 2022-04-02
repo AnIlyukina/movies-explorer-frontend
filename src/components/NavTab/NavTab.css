@@ -9,7 +9,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 24px 0;
+  margin: 25px 0;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
@@ -19,4 +19,11 @@
 
 .navigation__link{
   border-bottom: 1px black solid;
+}
+
+@media(max-width: 500px){
+  .navigation__links{
+    max-width: 214px;
+    font-size: 11px;
+  }
 }

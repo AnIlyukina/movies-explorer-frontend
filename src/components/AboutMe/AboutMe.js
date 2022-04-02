@@ -13,15 +13,17 @@ function AboutMe(){
       <div className="about-me__content">
         <img className='about-me__foto' src={foto}/>
         <div className='about-me__info'>
-          <div className='about-me__name'>
-            Анна
-          </div>
-          <div className='about-me__profession'> 
-            Фронтенд-разработчик, 23 года
-          </div>
-          <div className='about-me__text'>
-            Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. 
-            С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
+          <div>
+            <div className='about-me__name'>
+              Анна
+            </div>
+            <div className='about-me__profession'> 
+              Фронтенд-разработчик, 23 года
+            </div>
+            <div className='about-me__text'>
+              Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. 
+              С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы. осле того, как прошёл курс 
+            </div>
           </div>
           <div className='about-me__links'>
             <a className='about-me__link'>Facebook</a>
@@ -34,15 +36,15 @@ function AboutMe(){
         <ul className="about-me__portfolio-list">
           <li className="about-me__portfolio-list-item">
             <a>Статичный сайт</a>
-            <button className="about-me__portfolio-list-item-button"></button>
+            <button className="about-me__portfolio-button"></button>
           </li>
           <li className="about-me__portfolio-list-item">
             <a>Адаптивный сайт</a>
-            <button className="about-me__portfolio-list-item-button"></button>
+            <button className="about-me__portfolio-button"></button>
           </li>
           <li className="about-me__portfolio-list-item">
             <a>Одностраничное приложение</a>
-            <button className="about-me__portfolio-list-item-button"></button>
+            <button className="about-me__portfolio-button"></button>
           </li>
         </ul>
       </div>

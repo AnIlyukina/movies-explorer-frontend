@@ -8,19 +8,19 @@ function AboutProject(){
         О проекте
       </h2>
       <div className="project__grid">
-        <div>
+        <div className="project__element_type_first">
           Дипломный проект включал 5 этапов
         </div>
-        <div>
+        <div className="project__element_type_second">
           На выполнение диплома ушло 5 недель
         </div>
-        <div className="project__element">
+        <div className="project__element project__element_type_third">
           Составление плана, работу над бэкендом, вёрстку, добавление 
-          функциональности и финальные доработки.
+          функциональности и финальные              доработки.
         </div>
-        <div className="project__element">
+        <div className="project__element project__element_type_four">
           У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, 
-          чтобы успешно защититься.
+          чтобы успешно                            защититься.
         </div>
       </div>
       <div className="project__process">
