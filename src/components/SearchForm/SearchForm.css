@@ -1,0 +1,81 @@
+.search-form{
+  background-color: #F9F9F9;
+  padding: 17px 30px 17px 25px;
+  display: flex;
+  align-items: center;
+  border-radius: 9px;
+  margin-bottom: 69px;
+}
+
+.search-form__input{
+  padding-left: 16px;
+  width: 100%;
+  border: none;
+  background-color: inherit;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.search-form__input:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+.search-form__button{
+  background-color: rgba(43, 224, 128, 1);
+  padding: 17px;
+  border-radius: 50%;
+  background-image: url('../../images/icon__next.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  margin-right: 30px;
+}
+
+.movies__filmType{
+  display: flex;
+  width: 196px;
+}
+
+.search-form__label{
+  display: flex;
+  max-width: 36px;
+  width: 100%;
+  padding: 2px ;
+  background-color: #EBEBEB;
+  border-radius: 20px;
+  margin: 0 14px 0 30px;
+  box-sizing: border-box;
+}
+
+.search-form__border{
+  width: 1px;
+  height: 40px;
+  background-color: #E8E8E8;
+}
+
+.search-form__range{
+  background-color: transparent;
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.search-form__range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 14px;
+	height: 14px;
+	background-color: #2BE080;
+	border-radius: 50%;
+  border: 1px solid white;
+
+}   
+
+.search-form__type-film{
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+}
