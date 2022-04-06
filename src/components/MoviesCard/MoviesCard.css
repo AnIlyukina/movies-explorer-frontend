@@ -37,8 +37,20 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 11px;
-  padding: 9px 15px;
+  max-width: 100px;
+  width: 100%;
+  padding: 9px 0px;
   border: none;
   background-color: #F9F9F9;
   border-radius: 30px;
+}
+
+.movies-card__image{
+  width: 100%;
+}
+
+@media(max-width:1000px){
+  .movies-card{
+    max-width: 342px;
+  }
 }
