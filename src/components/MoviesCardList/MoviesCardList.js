@@ -1,8 +1,23 @@
+
+
 import React from "react";
 import './MoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard'
+import { useLocation } from 'react-router-dom'
 
 function MoviesCardList(props){
+
+  const location = useLocation();
+
+  const[buttonElse, setButtonElse] = React.useState(false);
+
+  React.useEffect(() => {
+    if(location.pathname === '/saved-movies'){
+      setButtonElse(true)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return(
     <section className="movies-list">
       <ul className="movies-list__grid">
@@ -13,7 +28,7 @@ function MoviesCardList(props){
           />
         ))}
       </ul>
-      <button className="movies-list__button">Ещё</button>
+      <button className={`${buttonElse ? "movies-list__button none" : "movies-list__button"}`}>Ещё</button>
     </section>
   )
 }

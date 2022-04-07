@@ -54,3 +54,17 @@
     max-width: 342px;
   }
 }
+
+@media(max-width: 780px){
+  .movies-card{
+    max-width: 300px;
+  }
+
+  .movies-card__button{
+    margin: 14px 0;
+  }
+
+  .movies-card__info{
+    padding: 14px;
+  }
+}

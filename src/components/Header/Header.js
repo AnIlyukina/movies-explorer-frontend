@@ -14,7 +14,7 @@ function Header(){
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
-    if(location.pathname === '/movies' || location.pathname === '/saved-movies'){
+    if(location.pathname === '/movies' || location.pathname === '/saved-movies' || location.pathname === '/profile'){
       setLoggedIn(true)
     }
   }, []);

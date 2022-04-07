@@ -30,7 +30,7 @@
 
 .footer__copyright{
   margin: 0;
-  color: #A0A0A0;
+  color: rgba(0, 0, 0, 1)
 }
 .footer__link{
   margin-right: 20px;
@@ -43,6 +43,7 @@
 @media(max-width: 1000px){
   .footer{
     padding: 79px 30px 20px;
+    background-color: white;
   }
 }
 
