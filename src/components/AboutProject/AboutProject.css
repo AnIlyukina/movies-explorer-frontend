@@ -1,11 +1,11 @@
-.project{
+.about-project{
   padding: 0 70px;
   font-family: 'Inter';
   font-style: normal;
   letter-spacing: -0.04em;
 }
 
-.project__title{
+.about-project__title{
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
@@ -14,7 +14,7 @@
   margin: 0;
 }
 
-.project__grid{
+.about-project__grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 40px;
@@ -25,15 +25,20 @@
   margin-top: 70px;
 }
 
-.project__element{
+.about-project__stages{
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.about-project__description{
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  white-space: pre-wrap;
-  overflow: auto;
 }
 
-.project__process{
+.about-project__process{
   display: grid;
   padding: 110px 0;
   text-align: center;
@@ -44,95 +49,96 @@
   line-height: 17px;
 }
 
-.project__process-first{
+.about-project__process-backend{
   flex-grow: 1;
   padding: 9px 0;
   background-color: #2BE080;
 }
 
-.project__process-second{
+.about-project__process-frontend{
   flex-grow: 4;
   padding: 9px 0;
   background-color: #F2F2F2;
 }
 
-.project__process-name{
+.about-project__process-name{
   color: rgba(160, 160, 160, 1);
 }
 
 @media(max-width: 1000px){
-  .project{
+  .about-project{
     padding: 0 50px;
   }
 
-  .project__title{
+  .about-project__title{
     padding: 90px 0 23px;
   }
-  .project__grid{
+  .about-project__grid{
     grid-column-gap: 30px;
     grid-row-gap: 22px;
     font-size: 18px;
     line-height: 22px;
   }
-
-  .project__element{
-    font-size: 12px;
-    line-height: 18px;
-  }
-
-  .project__process{
+  
+  .about-project__process{
     padding: 93px 0 90px;
   }
 
+  .about-project__description{
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
 }
 
 @media(max-width: 500px){
-  .project{
+  .about-project{
     padding: 0 18px;
   }
 
-  .project__title{
+  .about-project__title{
     font-size: 18px;
     line-height: 22px;
     padding: 70px 0 28px;
   }
-  .project__grid{
+  .about-project__grid{
     grid-template-columns: 1fr;
     grid-row-gap: 16px;
     margin-top: 60px;
   }
 
-  .project__element_type_first{
+  .about-project__stages_type_first{
     order: 0
   }
-  .project__element_type_second{
+  .about-project__stages_type_second{
     order: 2;
     margin-top: 40px;
   }
-  .project__element_type_third{
-    order: 1
-  }
-  .project__element_type_four{
-    order: 3
-  }
 
-  .project__element{
+  .about-project__description_type_stages{
+    order: 1;
     font-size: 11px;
     line-height: 16px;
   }
 
-  .project__process{
+  .about-project__description_type_time{
+    order: 3;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__process{
     padding: 60px 0 70px;
     font-size: 11px;
     line-height: 13px;    
     grid-template-columns: 1fr 1.84fr;
     grid-row-gap: 10px;
   }
-  .project__process-first{
+  .about-project__process-backend{
     padding: 11px 0;
   }
   
-  .project__process-second{
+  .about-project__process-frontend{
     padding: 11px 0;
   }
 

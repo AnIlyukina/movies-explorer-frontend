@@ -1,0 +1,90 @@
+
+.portfolio__link:hover {
+  opacity: .6;
+}
+.portfolio__button{
+  cursor: pointer;
+}
+
+
+.portfolio{
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+  margin-top: 100px;
+}
+
+.portfolio__list{
+  list-style-type: none;
+  color: black;
+  padding: 30px 0 106px;
+  font-size: 30px;
+  line-height: 50px;
+  margin: 0;
+
+}
+
+.portfolio__link{
+  text-decoration: none;
+  width: 100%;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  transition: .5s;
+}
+
+.portfolio__button{
+  background-image: url('../../images/about-me__follow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  max-width: 29px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.portfolio__list-item{
+  padding: 20px 0 19px;
+  border-bottom: 1px #E8E8E8 solid;
+}
+
+.portfolio__list-item:last-child{
+  border-bottom: none;
+}
+
+@media(max-width: 1000px){
+
+  .portfolio{
+    margin-top: 90px;
+  }
+
+  .portfolio__list{
+    padding: 30px 0 70px;
+    font-size: 28px;
+  }
+  
+  .portfolio__button{
+    max-width: 27px;
+  }
+}
+
+@media(max-width: 550px){  
+
+  .portfolio{
+    margin-top: 70px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .portfolio__list{
+    padding: 20px 0 50px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+  
+  .portfolio__button{
+    max-width: 18px;
+    background-size: 10px 10px;
+  }
+
+}

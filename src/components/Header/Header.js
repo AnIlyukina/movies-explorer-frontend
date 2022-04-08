@@ -39,8 +39,8 @@ function Header(){
 
   return(
     <header className= {`${!loggedIn ? 'header' : 'header header_type_auth'}`}>
-      <img className="header__logo" src={headerLogo} alt="Логотип"/>
-      <div className="header__links">
+      <img className="header__logo" src={headerLogo} alt="logo"/>
+      <nav className="header__links">
 
         {loggedIn && isMobile && (
           <>
@@ -109,7 +109,7 @@ function Header(){
           </>
           )
         }
-      </div>
+      </nav>
     </header>
   )
 }

@@ -5,16 +5,40 @@ import './Footer.css'
 function Footer(){
   return(
     <footer className='footer'>
-      <div className='footer__content'>
+      <p className='footer__content'>
         Учебный проект Яндекс.Практикум х BeatFilm.
-      </div>
+      </p>
       <div className='footer__info'>
         <p className="footer__copyright">&copy; 2022</p>
-        <div className="footer__links">
-          <a className="footer__link">Яндекс.Практикум</a>
-          <a className="footer__link">Github</a>
-          <a className="footer__link">Facebook</a>
-        </div>
+        <ul className="footer__links">
+          <li className="footer__links-item">
+            <a 
+              className="footer__link"
+              target="_blank"
+              href="https://praktikum.yandex.ru/"
+            >
+              Яндекс.Практикум
+            </a>
+          </li>
+          <li className="footer__links-item">
+            <a 
+              className="footer__link"
+              target="_blank"
+              href="https://github.com/AnIlyukina"
+            >
+              Github
+            </a>
+          </li>
+          <li className="footer__links-item">
+            <a 
+              className="footer__link"
+              target="_blank"
+              href="https://praktikum.yandex.ru/"
+            >
+              Facebook
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   )

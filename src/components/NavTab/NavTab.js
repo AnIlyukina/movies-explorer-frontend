@@ -4,12 +4,24 @@ import './NavTab.css'
 
 function NavTab(){
   return(
-    <nav className="navigation">
-      <div className="navigation__links">
-      <a className="navigation__link">О проекте</a>
-      <a className="navigation__link">Технологии</a>
-      <a className="navigation__link">Студент</a>
-      </div>
+    <nav className="nav-tab">
+      <ul className="nav-tab__list">
+        <li> 
+          <a href="/#about-project" className="nav-tab__link">
+            О проекте
+          </a>
+        </li>
+        <li>
+          <a href="/#techs" className="nav-tab__link">
+            Технологии
+          </a>
+        </li>
+        <li>
+          <a href="/#aboutMe" className="nav-tab__link">
+            Студент
+          </a>
+        </li>
+      </ul>
     </nav>
   )
 }
