@@ -1,11 +1,11 @@
-import React from "react";
-import './NavTab.css'
+import React from 'react';
+import './NavTab.css';
 
-function NavTab(){
-  return(
+function NavTab() {
+  return (
     <nav className="nav-tab">
       <ul className="nav-tab__list">
-        <li> 
+        <li>
           <a href="/#about-project" className="nav-tab__link">
             О проекте
           </a>
@@ -22,7 +22,7 @@ function NavTab(){
         </li>
       </ul>
     </nav>
-  )
+  );
 }
 
-export default NavTab
+export default NavTab;

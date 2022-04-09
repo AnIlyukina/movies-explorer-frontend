@@ -1,8 +1,8 @@
-import React from "react";
-import './Techs.css'
+import React from 'react';
+import './Techs.css';
 
-function Techs(){
-  return(
+function Techs() {
+  return (
     <section className="techs" id="techs">
       <h2 className="techs__title">
         Технологии
@@ -37,7 +37,7 @@ function Techs(){
         </ul>
       </div>
     </section>
-  )
+  );
 }
 
 export default Techs;

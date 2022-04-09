@@ -1,21 +1,21 @@
-import React from "react";
-import './MoviesCardList.css'
-import MoviesCard from '../MoviesCard/MoviesCard'
-import { useLocation } from 'react-router-dom'
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/destructuring-assignment */
+import React from 'react';
+import './MoviesCardList.css';
+import { useLocation } from 'react-router-dom';
+import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList(props){
-
+function MoviesCardList(props) {
   const location = useLocation();
-
-  const[buttonElse, setButtonElse] = React.useState(false);
+  const [buttonElse, setButtonElse] = React.useState(false);
 
   React.useEffect(() => {
-    if(location.pathname === '/saved-movies'){
-      setButtonElse(true)
+    if (location.pathname === '/saved-movies') {
+      setButtonElse(true);
     }
-  }, []);
+  }, [location.pathname]);
 
-  return(
+  return (
     <section className="movies-list">
       <ul className="movies-list__grid">
         {props.moviesCard.map((card) => (
@@ -25,9 +25,9 @@ function MoviesCardList(props){
           />
         ))}
       </ul>
-      <button className={`${buttonElse ? "movies-list__button none" : "movies-list__button"}`}>Ещё</button>
+      <button className={`${buttonElse ? 'movies-list__button none' : 'movies-list__button'}`}>Ещё</button>
     </section>
-  )
+  );
 }
 
 export default MoviesCardList;

@@ -1,15 +1,20 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable-next-line react/button-has-type */
+
 import React from 'react';
 import './NotFound.css';
 
-function NotFound(){
+function NotFound() {
   return (
     <div className="not-found">
       <h1 className="not-found__title">404</h1>
       <p className="not-found__text">Страница не найдена</p>
-      <button c
-        lassName="not-found__button" 
-        type="button">
-          Назад
+      <button
+        className="not-found__button"
+        type="button"
+      >
+        Назад
       </button>
     </div>
   );
