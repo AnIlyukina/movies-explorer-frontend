@@ -1,6 +1,5 @@
 import React from "react";
 import './Profile.css'
-import { Link } from 'react-router-dom'
 
 function Profile(){
   return(
@@ -9,12 +8,24 @@ function Profile(){
       <label className="profile__label">
         Имя
         <input
+          id="profile-name"
+          name="profile-name"
+          placeholder="Анна"
+          type="text"
+          autoComplete="off"
+          required
           className="profile__input"
         />
       </label >
       <label className="profile__label">
         E-mail
         <input
+          id="profile-email"
+          name="profile-email"
+          placeholder="anna@yandex.ru"
+          type="email"
+          autoComplete="off"
+          required
           className="profile__input"
         />
       </label>
@@ -23,7 +34,7 @@ function Profile(){
       >
         Редактировать
       </button>
-      <Link className="profile__link">Выйти из аккаунта</Link>
+      <a className="profile__link-exit">Выйти из аккаунта</a>
     </section>
   )
 }

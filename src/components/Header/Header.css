@@ -23,6 +23,11 @@
 }
 .header__link{
   text-decoration: none;
+  transition: .3s;
+}
+
+.header__link:hover{
+  opacity: .6;
 }
 
 .header__link_type_signup{

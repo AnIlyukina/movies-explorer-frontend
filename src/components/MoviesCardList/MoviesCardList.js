@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import './MoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard'
@@ -15,7 +13,6 @@ function MoviesCardList(props){
     if(location.pathname === '/saved-movies'){
       setButtonElse(true)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return(

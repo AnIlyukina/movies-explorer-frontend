@@ -1,25 +1,24 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React from "react";
-import './Header.css'
-import headerLogo from "../../images/header__logo.svg";
-import { Link, useLocation } from 'react-router-dom'
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
+/* eslint-disable react/jsx-no-bind */
+import React from 'react';
+import './Header.css';
+import { Link, useLocation, NavLink } from 'react-router-dom';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import HeaderLogoLink from '../HeaderLogoLink/HeaderLogoLink';
 
-function Header(){
-
+function Header() {
   const location = useLocation();
 
-  const[loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    if(location.pathname === '/movies' || location.pathname === '/saved-movies' || location.pathname === '/profile'){
-      setLoggedIn(true)
-    }
-  }, []);
-
   const [width, setWidth] = React.useState(window.innerWidth);
+
+  React.useEffect(() => {
+    if (location.pathname === '/movies' || location.pathname === '/saved-movies' || location.pathname === '/profile') {
+      setLoggedIn(true);
+    }
+  }, [location.pathname]);
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -33,85 +32,79 @@ function Header(){
   const isMobile = width <= 768;
 
   function handleBurgerMenuClick() {
-    setIsBurgerMenuOpen(!isBurgerMenuOpen)
+    setIsBurgerMenuOpen(!isBurgerMenuOpen);
   }
 
-
-  return(
-    <header className= {`${!loggedIn ? 'header' : 'header header_type_auth'}`}>
-      <img className="header__logo" src={headerLogo} alt="logo"/>
+  return (
+    <header className={`${!loggedIn ? 'header' : 'header header_type_auth'}`}>
+      <HeaderLogoLink />
       <nav className="header__links">
 
         {loggedIn && isMobile && (
-          <>
-            <button 
-              type="button"
-              className="header__button-menu"
-              onClick={handleBurgerMenuClick}
-            >
-            </button>
-          </>
+          // eslint-disable-next-line jsx-a11y/control-has-associated-label
+          <button
+            type="button"
+            className="header__button-menu"
+            onClick={handleBurgerMenuClick}
+          />
         )}
 
         {loggedIn && (
-          <>
-            <BurgerMenu
-              isOpen={isBurgerMenuOpen}
-              onClose={handleBurgerMenuClick}
-            />
-          </>
+          <BurgerMenu
+            isOpen={isBurgerMenuOpen}
+            onClose={handleBurgerMenuClick}
+          />
         )}
 
         {
-          !loggedIn &&(
+          !loggedIn && (
             <>
-            <Link 
-              to="sign-up" 
-              className="header__link header__link_type_signup" 
-            >
-              Регистрация
-            </Link>
-            <Link 
-              to="sign-in" 
-              className="header__link header__link_type_signin" 
-            > 
-              Войти
-            </Link>
-          </>
+              <Link
+                to="sign-up"
+                className="header__link header__link_type_signup"
+              >
+                Регистрация
+              </Link>
+              <Link
+                to="sign-in"
+                className="header__link header__link_type_signin"
+              >
+                Войти
+              </Link>
+            </>
           )
         }
         {
-          loggedIn && !isMobile &&(
+          loggedIn && !isMobile && (
             <>
-            <Link 
-              to="/movies" 
-              className="header__link header__link_type_movies" 
-            >
-              Фильмы
-            </Link>
-            <Link 
-              to="/saved-movies" 
-              className="header__link header__link_type_saved-movies" 
-            > 
-              Сохраненные фильмы
-            </Link>
-            <Link 
-              to="/profile" 
-              className="header__link header__link_type_profile" 
-            > 
-              Аккаунт
-            </Link>
-            <Link 
-              to="/profile" 
-              className="header__icon-account" 
-            > 
-            </Link>
-          </>
+              <NavLink
+                to="/movies"
+                className="header__link header__link_type_movies"
+              >
+                Фильмы
+              </NavLink>
+              <NavLink
+                to="/saved-movies"
+                className="header__link header__link_type_saved-movies"
+              >
+                Сохраненные фильмы
+              </NavLink>
+              <NavLink
+                to="/profile"
+                className="header__link header__link_type_profile"
+              >
+                Аккаунт
+              </NavLink>
+              <Link
+                to="/profile"
+                className="header__icon-account"
+              />
+            </>
           )
         }
       </nav>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

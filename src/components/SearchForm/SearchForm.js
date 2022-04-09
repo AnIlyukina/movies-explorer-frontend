@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import './SearchForm.css'
 import searchIcon from "../../images/icon__search.svg"

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './BurgerMenu.css'
 
 function BurgerMenu(props){
@@ -11,23 +11,39 @@ function BurgerMenu(props){
         onClick={props.onClose}
       ></button>
       <div className="burger_menu__movies-links">
-        <Link className="burger_menu__movies-link">Главная</Link>
-        <Link className="burger_menu__movies-link active">Фильмы</Link>
-        <Link className="burger_menu__movies-link">Сохраненные фильмы</Link>
+        <NavLink 
+          exact
+          to="/"
+          className="burger_menu__movies-link"
+        >
+          Главная
+        </NavLink>
+        <NavLink 
+          to="/movies"
+          className="burger_menu__movies-link active"
+        >
+          Фильмы
+        </NavLink>
+        <NavLink 
+          to="/saved-movies"
+          className="burger_menu__movies-link"
+        >
+          Сохраненные фильмы
+        </NavLink>
       </div>
       <div className="burger_menu__profile-block">
         <div className="burger_menu__profile-links">
-          <Link 
+          <NavLink 
             to="/profile" 
             className="header__link header__link_type_profile" 
           > 
             Аккаунт
-          </Link>
-          <Link 
+          </NavLink>
+          <NavLink 
             to="/profile" 
             className="header__icon-account" 
           > 
-          </Link>
+          </NavLink>
         </div>
       </div>
     </section>

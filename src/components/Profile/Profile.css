@@ -44,13 +44,28 @@
   line-height: 16px;
   border: none;
   background: transparent;
+  transition: .3s;
+}
+.profile__button:hover{
+  cursor: pointer;
+  opacity: .6;
 }
 
-.profile__link{
+.profile__link-exit{
   text-align: center;
   color: rgba(238, 52, 101, 1);
   text-decoration: none;
   margin-top: 16px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  transition: .3s;
+  text-decoration: none;
+}
+
+.profile__link-exit:hover{
+  opacity: .6;
+  cursor: pointer;
 }
 
 @media(max-width:500px){
@@ -75,7 +90,7 @@
     line-height: 15px;
   }
 
-  .profile__link{
+  .profile__link-exit{
     font-size: 12px;
     line-height: 15px;
   }
