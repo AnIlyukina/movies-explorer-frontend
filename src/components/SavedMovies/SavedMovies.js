@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
@@ -8,7 +9,6 @@ function SavedMovies(props) {
     <section className="saved-movies">
       <SearchForm />
       <MoviesCardList
-        // eslint-disable-next-line react/destructuring-assignment
         moviesCard={props.moviesCard}
       />
     </section>

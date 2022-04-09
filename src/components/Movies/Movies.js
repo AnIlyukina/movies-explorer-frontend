@@ -1,17 +1,17 @@
-import React from "react";
-import './Movies.css'
-import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import React from 'react';
+import './Movies.css';
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-function Movies(props){
-  return(
+function Movies(props) {
+  return (
     <section className="movies">
-      <SearchForm/>
+      <SearchForm />
       <MoviesCardList
         moviesCard={props.moviesCard}
       />
     </section>
-  )
+  );
 }
 
-export default Movies
+export default Movies;

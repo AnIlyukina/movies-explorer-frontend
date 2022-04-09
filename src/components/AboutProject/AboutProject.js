@@ -1,8 +1,8 @@
-import React from "react";
-import './AboutProject.css'
+import React from 'react';
+import './AboutProject.css';
 
-function AboutProject(){
-  return(
+function AboutProject() {
+  return (
     <section className="about-project" id="about-project">
       <h2 className="about-project__title">
         О проекте
@@ -36,7 +36,7 @@ function AboutProject(){
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default AboutProject
+export default AboutProject;
