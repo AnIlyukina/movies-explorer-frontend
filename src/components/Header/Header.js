@@ -18,6 +18,9 @@ function Header() {
     if (location.pathname === '/movies' || location.pathname === '/saved-movies' || location.pathname === '/profile') {
       setLoggedIn(true);
     }
+    if (location.pathname === '/') {
+      setLoggedIn(false);
+    }
   }, [location.pathname]);
 
   const updateWidth = () => {

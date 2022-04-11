@@ -8,7 +8,10 @@ function Profile() {
   return (
     <section className="profile">
       <h1 className="profile__greetings">Привет, Анна!</h1>
-      <label className="profile__label">
+      <label
+        htmlFor="profile-name"
+        className="profile__label"
+      >
         Имя
         <input
           id="profile-name"
@@ -20,7 +23,10 @@ function Profile() {
           className="profile__input"
         />
       </label>
-      <label className="profile__label">
+      <label
+        htmlFor="profile-email"
+        className="profile__label"
+      >
         E-mail
         <input
           id="profile-email"

@@ -90,16 +90,13 @@
 .login__link{
   display: block;
   text-align: center;
+  margin: 0;
   margin-top: 16px;
   font-size: 14px;
   line-height: 17px;
   transition: .3s;
 }
 
-.login__link:hover{
-  opacity: .6;
-  cursor: pointer;
-}
 
 .login__link-register{
   color: #2BE080;

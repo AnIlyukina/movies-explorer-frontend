@@ -25,7 +25,10 @@ function SearchForm() {
       </div>
       <div className="search-form__block-type">
         <div className="search-form__border" />
-        <label className="search-form__range-label" for="filmType">
+        <label
+          className="search-form__range-label"
+          htmlFor="filmType"
+        >
           <input
             className="search-form__range-input"
             type="range"

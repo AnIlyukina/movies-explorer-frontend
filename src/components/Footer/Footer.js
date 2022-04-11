@@ -34,7 +34,7 @@ function Footer() {
             <a
               className="footer__link"
               target="_blank"
-              href="https://praktikum.yandex.ru/"
+              href="https://www.facebook.com/profile.php?id=100009561622151"
               rel="noreferrer"
             >
               Facebook

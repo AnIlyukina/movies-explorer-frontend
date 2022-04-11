@@ -3,7 +3,6 @@ import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import Main from '../Main/Main';
 import Register from '../Register/Register';
-// import ProtectedRoute from "./ProtectedRoute";
 import Login from '../Login/Login';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -21,13 +20,13 @@ const moviesCard = [
   },
   {
     id: 2,
-    duration: 27,
+    duration: 26,
     image: ImageFilm,
     nameRU: 'В погоне за Бенкси',
   },
   {
     id: 3,
-    duration: 27,
+    duration: 30,
     image: ImageFilm,
     nameRU: 'В погоне за Бенкси',
   },

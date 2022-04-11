@@ -15,7 +15,10 @@ function Register() {
         <div className="register__form-inputs">
           <HeaderLogoLink />
           <h1 className="register__title">Добро пожаловать!</h1>
-          <label className="redister__label">
+          <label
+            htmlFor="register-name"
+            className="redister__label"
+          >
             Имя
             <input
               id="register-name"
@@ -28,7 +31,10 @@ function Register() {
             />
             <span className="register__error" />
           </label>
-          <label className="redister__label">
+          <label
+            className="redister__label"
+            htmlFor="register-email"
+          >
             E-mail
             <input
               id="register-email"
@@ -56,12 +62,12 @@ function Register() {
         </div>
         <div>
           <button className="register__button">Зарегистрироваться</button>
-          <a className="register__link">
+          <p className="register__link">
             Уже зарегистрированы?
             <Link to="/sign-in" className="register__link-login">
               Войти
             </Link>
-          </a>
+          </p>
         </div>
       </form>
     </section>

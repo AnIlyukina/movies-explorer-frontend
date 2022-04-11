@@ -13,7 +13,10 @@ function Login() {
         <div className="login__form-inputs">
           <HeaderLogoLink />
           <h1 className="login__title">Рады видеть!</h1>
-          <label className="login__label">
+          <label
+            htmlFor="login-password"
+            className="login__label"
+          >
             E-mail
             <input
               id="login-email"
@@ -26,7 +29,10 @@ function Login() {
             />
             <span className="login__error"> </span>
           </label>
-          <label className="login__label">
+          <label
+            htmlFor="login-password"
+            className="login__label"
+          >
             Пароль
             <input
               id="login-password"
@@ -41,10 +47,10 @@ function Login() {
         </div>
         <div>
           <button className="login__button">Войти</button>
-          <a className="login__link">
+          <p className="login__link">
             Еще не зарегистрированы?
             <Link to="sign-up" className="login__link-register"> Регистрация</Link>
-          </a>
+          </p>
         </div>
       </form>
     </section>
