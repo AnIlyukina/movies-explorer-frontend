@@ -2,7 +2,7 @@
   max-width: 360px;
   border-radius: 6px;
   width: 100%;
-  font-family: 'Inter';
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,27 @@
   border: none;
   background-color: #F9F9F9;
   border-radius: 30px;
+}
+
+.saved{
+  background-color: #EE3465;
+  background-image: url('../../images/icon__select.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 29px;
+}
+
+.delete{
+  background-color: #F9F9F9;
+  background-image: url('../../images/icon__delete.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 29px;
+}
+
+.movies-card__button:hover {
+  opacity: .6;
+  cursor: pointer;
 }
 
 .movies-card__image{

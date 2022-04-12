@@ -1,5 +1,5 @@
 .burger-menu{
-  font-family: 'Inter';
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -15,7 +15,6 @@
   box-sizing: border-box;
   flex-direction: column;
   padding: 30px 30px 92px;
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 18px;

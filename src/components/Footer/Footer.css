@@ -1,7 +1,7 @@
 .footer{
   padding: 79px 70px 20px;
   background-color: #FAFAFA;
-  font-family: 'Inter';
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
   display: flex;

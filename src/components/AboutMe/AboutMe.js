@@ -11,7 +11,11 @@ function AboutMe() {
         Студент
       </h2>
       <div className="about-me__content">
-        <img className="about-me__foto" src={myFoto} alt="my-foto" />
+        <img
+          className="about-me__foto"
+          src={myFoto}
+          alt="my-foto"
+        />
         <div className="about-me__info">
           <div>
             <div className="about-me__name">

@@ -13,13 +13,14 @@ function SearchForm() {
       <div className="search-form__block-search">
         <img
           className="search-form__icon"
-          alt="Поиск"
           src={searchIcon}
+          alt="Поиск"
         />
         <input
           className="search-form__search-input"
           type="text"
           placeholder="Фильм"
+          required
         />
         <button type="button" className="search-form__button" />
       </div>
@@ -35,6 +36,7 @@ function SearchForm() {
             name="filmType"
             min="1"
             max="2"
+            required
           />
         </label>
         <span className="search-form__type-film">Короткометражки</span>

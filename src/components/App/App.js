@@ -17,18 +17,21 @@ const moviesCard = [
     duration: 27,
     image: ImageFilm,
     nameRU: 'В погоне за Бенкси',
+    isSaved: false,
   },
   {
     id: 2,
     duration: 26,
     image: ImageFilm,
     nameRU: 'В погоне за Бенкси',
+    isSaved: true,
   },
   {
     id: 3,
     duration: 30,
     image: ImageFilm,
     nameRU: 'В погоне за Бенкси',
+    isSaved: false,
   },
 ];
 
