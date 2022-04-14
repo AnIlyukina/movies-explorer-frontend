@@ -1,0 +1,41 @@
+{
+  "extends": [
+    "react-app",
+    "prettier",
+    "airbnb"
+  ],
+  "globals": {
+    "require": true
+  },
+  "rules": {
+    "jsx-quotes": [
+      1,
+      "prefer-double"
+    ],
+    "semi": 1,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": 0,
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [
+          "_id",
+          "_baseUrl",
+          "_headers"
+        ]
+      }
+    ]
+  },
+  "plugins": [
+    "prettier"
+  ]
+}
