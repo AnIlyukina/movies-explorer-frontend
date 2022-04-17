@@ -1,0 +1,83 @@
+.infoTooltip{
+  display: flex;
+  background-color: rgba(0, 0, 0, .5);
+  position: fixed;
+  top: 0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.6s, opacity 0.3s ease-in-out;
+}
+
+.infoTooltip_opened{
+  visibility: visible;
+  opacity: 1;
+}
+
+.infoTooltip__message{
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin: 32px 0 0;
+}
+
+.infoTooltip__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 430px;
+  box-sizing: border-box;
+  padding: 60px 36px ;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  position: relative;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media (max-width:700px){
+  .infoTooltip__container{
+    max-width: 282px;
+  }
+
+  .infoTooltip__close{
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0px;
+  }
+}
+
+.infoTooltip__close {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: .3s;
+  background-image: url('../../images/burder-menu__close-button.svg');
+}
+
+.infoTooltip__close:hover{
+  opacity: .6;
+  cursor: pointer;
+}

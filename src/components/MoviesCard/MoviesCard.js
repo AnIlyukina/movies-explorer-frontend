@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 import './MoviesCard.css';
 
-function MoviesCard({ moviesCard }) {
+function MoviesCard({ movie }) {
   const location = useLocation();
 
   const [isPathSavedMovies, setIsPathSavedMovies] = React.useState(false);
@@ -20,23 +20,23 @@ function MoviesCard({ moviesCard }) {
     <li className="movies-card">
       <div className="movies-card__info">
         <p className="movies-card__name">
-          {moviesCard.nameRU}
+          {movie.nameRU}
         </p>
         <span className="movies-card__time">
-          {moviesCard.duration}
+          {movie.duration}
           {' '}
           минут
         </span>
       </div>
       <img
         className="movies-card__image"
-        src={moviesCard.image}
+        src={`https://api.nomoreparties.co${movie.image.url}`}
         alt="Постер фильма"
       />
       <button
-        className={`${!moviesCard.isSaved ? 'movies-card__button' : 'movies-card__button saved '}${isPathSavedMovies ? ' delete' : ''}`}
+        className={`${!movie.isSaved ? 'movies-card__button' : 'movies-card__button saved '}${isPathSavedMovies ? ' delete' : ''}`}
       >
-        {`${!moviesCard.isSaved && !isPathSavedMovies ? 'Сохранить' : ' '}`}
+        {`${!movie.isSaved && !isPathSavedMovies ? 'Сохранить' : ' '}`}
       </button>
     </li>
   );

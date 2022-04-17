@@ -50,6 +50,10 @@
   background: transparent;
   transition: .3s;
 }
+
+.profile__button_disabled{
+  opacity: .5;
+}
 .profile__button:hover{
   cursor: pointer;
   opacity: .6;

@@ -18,10 +18,10 @@ function MoviesCardList(props) {
   return (
     <section className="movies-list">
       <ul className="movies-list__grid">
-        {props.moviesCard.map((card) => (
+        {props.movies.map((movie) => (
           <MoviesCard
-            key={card.id}
-            moviesCard={card}
+            key={movie.id}
+            movie={movie}
           />
         ))}
       </ul>

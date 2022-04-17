@@ -9,7 +9,7 @@ function Movies(props) {
     <section className="movies">
       <SearchForm />
       <MoviesCardList
-        moviesCard={props.moviesCard}
+        movies={props.movies}
       />
     </section>
   );

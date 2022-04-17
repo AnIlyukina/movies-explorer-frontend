@@ -17,18 +17,21 @@ function BurgerMenu(props) {
           exact
           to="/"
           className="burger_menu__movies-link"
+          onClick={props.onClose}
         >
           Главная
         </NavLink>
         <NavLink
           to="/movies"
           className="burger_menu__movies-link active"
+          onClick={props.onClose}
         >
           Фильмы
         </NavLink>
         <NavLink
           to="/saved-movies"
           className="burger_menu__movies-link"
+          onClick={props.onClose}
         >
           Сохраненные фильмы
         </NavLink>
@@ -38,12 +41,14 @@ function BurgerMenu(props) {
           <NavLink
             to="/profile"
             className="header__link header__link_type_profile"
+            onClick={props.onClose}
           >
             Аккаунт
           </NavLink>
           <NavLink
             to="/profile"
             className="header__icon-account"
+            onClick={props.onClose}
           />
         </div>
       </div>

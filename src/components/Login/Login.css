@@ -10,12 +10,12 @@
   box-sizing: border-box;
 }
 
-.login__form{
+/* .login__form{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-}
+} */
 
 .login__form-inputs{
   display: flex;
