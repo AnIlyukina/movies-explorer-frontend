@@ -23,7 +23,7 @@ function BurgerMenu(props) {
         </NavLink>
         <NavLink
           to="/movies"
-          className="burger_menu__movies-link active"
+          className="burger_menu__movies-link"
           onClick={props.onClose}
         >
           Фильмы

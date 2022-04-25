@@ -1,20 +1,21 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/button-has-type */
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 
 import './MoviesCard.css';
 
-function MoviesCard({ movie }) {
-  const location = useLocation();
+function MoviesCard({
+  movie, handleSaveMovie, location, handleDeleteMovie, saved,
+}) {
+  function saveMovie() {
+    handleSaveMovie(movie);
+  }
 
-  const [isPathSavedMovies, setIsPathSavedMovies] = React.useState(false);
-
-  React.useEffect(() => {
-    if (location.pathname === '/saved-movies') {
-      setIsPathSavedMovies(true);
-    }
-  }, [location.pathname]);
+  function deleteMovie() {
+    handleDeleteMovie(movie);
+  }
 
   return (
     <li className="movies-card">
@@ -30,14 +31,26 @@ function MoviesCard({ movie }) {
       </div>
       <img
         className="movies-card__image"
-        src={`https://api.nomoreparties.co${movie.image.url}`}
+        src={movie.image.url ? `https://api.nomoreparties.co${movie.image.url}` : movie.image}
         alt="Постер фильма"
       />
-      <button
-        className={`${!movie.isSaved ? 'movies-card__button' : 'movies-card__button saved '}${isPathSavedMovies ? ' delete' : ''}`}
-      >
-        {`${!movie.isSaved && !isPathSavedMovies ? 'Сохранить' : ' '}`}
-      </button>
+      {location.pathname === '/saved-movies'
+        && (
+          <button
+            className="movies-card__button delete"
+            onClick={deleteMovie}
+          />
+        )}
+      {location.pathname === '/movies'
+        && (
+          <button
+            className={saved ? 'movies-card__button saved' : 'movies-card__button'}
+            onClick={saveMovie}
+          >
+            {saved ? ' ' : 'Сохранить'}
+          </button>
+        )}
+
     </li>
   );
 }

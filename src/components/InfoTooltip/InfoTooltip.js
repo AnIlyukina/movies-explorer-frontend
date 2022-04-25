@@ -3,21 +3,18 @@
 import React from 'react';
 import './infoTooltip.css';
 
-function InfoTooltip(props) {
+function InfoTooltip({
+  isOpen, isErrorStatus, messageInfoTooltip,
+}) {
   return (
     <section
-      className={`infoTooltip ${props.isOpen ? 'infoTooltip_opened' : ''} `}
+      className={`infoTooltip ${isOpen ? 'infoTooltip_opened' : ''} `}
     >
-      <div className="infoTooltip__container">
-        <button
-          type="button"
-          className="infoTooltip__close"
-          onClick={props.onClose}
-        />
+      <div className={`${isErrorStatus ? 'infoTooltip__container error' : 'infoTooltip__container success'} `}>
         <h2
           className="infoTooltip__message"
         >
-          {props.messageInfoTooltip}
+          {messageInfoTooltip}
         </h2>
       </div>
     </section>

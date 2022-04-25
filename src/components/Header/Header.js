@@ -1,36 +1,13 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import './Header.css';
-import { Link, useLocation, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import HeaderLogoLink from '../HeaderLogoLink/HeaderLogoLink';
 
-function Header() {
-  const location = useLocation();
-
-  const [loggedIn, setLoggedIn] = React.useState(false);
-
+function Header({ width, loggedIn, signOut }) {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState(false);
-
-  const [width, setWidth] = React.useState(window.innerWidth);
-
-  React.useEffect(() => {
-    if (location.pathname === '/movies' || location.pathname === '/saved-movies' || location.pathname === '/profile') {
-      setLoggedIn(true);
-    }
-    if (location.pathname === '/') {
-      setLoggedIn(false);
-    }
-  }, [location.pathname]);
-
-  const updateWidth = () => {
-    setWidth(window.innerWidth);
-  };
-
-  React.useEffect(() => {
-    window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
-  });
 
   const isMobile = width <= 768;
 
@@ -40,7 +17,7 @@ function Header() {
 
   return (
     <header className={`${!loggedIn ? 'header' : 'header header_type_auth'}`}>
-      <HeaderLogoLink />
+      <HeaderLogoLink signOut={signOut} />
       <nav className="header__links">
 
         {loggedIn && isMobile && (

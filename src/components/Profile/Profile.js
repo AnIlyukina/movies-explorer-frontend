@@ -1,3 +1,6 @@
+/* eslint-disable react/no-string-refs */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/button-has-type */
@@ -7,26 +10,29 @@ import './Profile.css';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import useForm from '../../Hooks/useForm';
 
-function Profile(props) {
+function Profile({ onUpdateUser, signOut }) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const {
-    handleChange, values, errors, isValid,
+    handleChange, values, errors, isValid, setValues, setErrors,
   } = useForm();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    props.onUpdateAvatar({
-      name: values.name,
+  function handleSubmit(event) {
+    event.preventDefault();
+    onUpdateUser({
+      name: values.userName,
       email: values.email,
     });
   }
 
   React.useEffect(() => {
-    values.name = currentUser.name;
-    values.email = currentUser.email;
-  }, [currentUser]);
+    setValues({
+      ...values,
+      userName: currentUser.name,
+      email: currentUser.email,
+    });
+    setErrors({});
+  }, []);
 
   return (
     <section className="profile">
@@ -45,13 +51,14 @@ function Profile(props) {
           <input
             id="profile-name"
             name="userName"
-            placeholder="Анна"
             type="text"
             autoComplete="off"
             required
             className="profile__input"
+            minLength="2"
             value={values.userName || ''}
             onChange={handleChange}
+
           />
         </label>
         <span className="register__error">{errors.userName}</span>
@@ -63,7 +70,6 @@ function Profile(props) {
           <input
             id="profile-email"
             name="email"
-            placeholder="anna@yandex.ru"
             type="email"
             autoComplete="off"
             required
@@ -76,12 +82,16 @@ function Profile(props) {
         <button
           onClick={handleSubmit}
           className={`profile__button ${!isValid ? 'profile__button_disabled' : ''}`}
+          disabled={!isValid
+            || (values.userName === currentUser.name
+              && values.email === currentUser.email)}
           type="submit"
         >
           Редактировать
         </button>
         <a
           className="profile__link-exit"
+          onClick={signOut}
         >
           Выйти из аккаунта
         </a>

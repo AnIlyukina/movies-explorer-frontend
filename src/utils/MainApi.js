@@ -11,7 +11,7 @@ class MainApi {
     if (response.ok) {
       return response.json();
     }
-    return Promise.reject(response.status);
+    return Promise.reject(response);
   }
 
   getUserInfo() {
@@ -22,20 +22,31 @@ class MainApi {
       .then(this._getServerResponse);
   }
 
-  setUserInfo(data) {
+  updateUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email,
-      }),
+      body: JSON.stringify(data),
     })
       .then(this._getServerResponse);
   }
 
   saveMovie(movie) {
+    const savedMovie = {
+      movieId: movie.id,
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration,
+      year: movie.year,
+      description: movie.description,
+      image: `https://api.nomoreparties.co/${movie.image.url}`,
+      trailerLink: movie.trailerLink,
+      thumbnail: `https://api.nomoreparties.co/${movie.image.formats.thumbnail.url}`,
+      nameRU: movie.nameRU,
+      nameEN: movie.nameEN,
+    };
+
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       credentials: 'include',
@@ -43,7 +54,7 @@ class MainApi {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(movie),
+      body: JSON.stringify(savedMovie),
     })
       .then(this._getServerResponse);
   }
@@ -95,7 +106,7 @@ class MainApi {
 
   logout() {
     return fetch(`${this._baseUrl}/logout`, {
-      method: 'GET',
+      method: 'POST',
       credentials: 'include',
       headers: this._headers,
     }).then(this._getServerResponse);
