@@ -58,7 +58,7 @@ function MoviesCardList(props) {
         }
       </ul>
       {
-        (props.movies.length === 0 && location.pathname === '/movies') ? <p>По вашему запросу ничего не найдено</p> : ''
+        (props.moviesMessage && location.pathname === '/movies') ? <p>{props.moviesMessage}</p> : ''
       }
       {
         (renderedCardsCount < props.movies.length && location.pathname === '/movies')

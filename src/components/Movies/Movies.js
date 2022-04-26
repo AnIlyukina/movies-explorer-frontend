@@ -8,7 +8,7 @@ import Preloader from '../Preloader/Preloader';
 
 function Movies({
   isLoading, handleSaveMovie, handleFilterMovies, displayMoviesList, searchFilm,
-  handleFilterMoviesType, typeFilmFilter, width, isSavedFilm, filterMovies,
+  handleFilterMoviesType, typeFilmFilter, width, moviesMessage, isSavedFilm, filterMovies,
 }) {
   return (
     <section className="movies">
@@ -27,6 +27,7 @@ function Movies({
             handleSaveMovie={handleSaveMovie}
             isSavedFilm={isSavedFilm}
             searchFilm={searchFilm}
+            moviesMessage={moviesMessage}
           />
         )
       }

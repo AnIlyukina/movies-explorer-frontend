@@ -8,6 +8,7 @@ import Preloader from '../Preloader/Preloader';
 function SavedMovies({
   isLoading, handleDeleteMovie, handleFilterMovies, searchFilm,
   handleFilterMoviesType, typeFilmFilter, width, displayMoviesList, isSavedFilm,
+  filterMovies,
 }) {
   return (
     <section className="saved-movies">
@@ -16,6 +17,7 @@ function SavedMovies({
         handleFilterMoviesType={handleFilterMoviesType}
         typeFilmFilter={typeFilmFilter}
         searchFilm={searchFilm}
+        filterMovies={filterMovies}
       />
       {
         isLoading ? <Preloader /> : (
