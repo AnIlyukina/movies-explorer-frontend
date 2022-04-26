@@ -114,7 +114,7 @@ class MainApi {
 }
 
 const api = new MainApi({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.moviesil.nomoredomains.work',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
