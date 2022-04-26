@@ -8,10 +8,6 @@ import './SearchForm.css';
 import searchIcon from '../../images/icon__search.svg';
 
 function SearchForm(props) {
-  // function handleClick() {
-  //   props.handleFilterMovies(props.searchFilm);
-  // }
-
   function handleChange(e) {
     props.handleFilterMovies(e.target.value);
   }
@@ -32,7 +28,7 @@ function SearchForm(props) {
         <input
           className="search-form__search-input"
           type="text"
-          placeholder="Фильм"
+          placeholder={props.errorSearch ? props.errorSearch : 'Фильм'}
           required
           value={props.searchFilm || ''}
           onChange={handleChange}

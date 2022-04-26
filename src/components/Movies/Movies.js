@@ -7,7 +7,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
 function Movies({
-  isLoading, handleSaveMovie, handleFilterMovies, displayMoviesList, searchFilm,
+  isLoading, handleSaveMovie, handleFilterMovies, displayMoviesList, searchFilm, errorSearch,
   handleFilterMoviesType, typeFilmFilter, width, moviesMessage, isSavedFilm, filterMovies,
 }) {
   return (
@@ -18,6 +18,7 @@ function Movies({
         typeFilmFilter={typeFilmFilter}
         searchFilm={searchFilm}
         filterMovies={filterMovies}
+        errorSearch={errorSearch}
       />
       {
         isLoading ? <Preloader /> : (

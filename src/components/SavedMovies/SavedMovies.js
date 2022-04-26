@@ -6,8 +6,8 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
 function SavedMovies({
-  isLoading, handleDeleteMovie, handleFilterMovies, searchFilm,
-  handleFilterMoviesType, typeFilmFilter, width, displayMoviesList, isSavedFilm,
+  isLoading, handleDeleteMovie, handleFilterMovies, searchFilm, errorSearch,
+  handleFilterMoviesType, typeFilmFilter, width, displayMoviesList, isSavedFilm, moviesMessage,
   filterMovies,
 }) {
   return (
@@ -18,6 +18,7 @@ function SavedMovies({
         typeFilmFilter={typeFilmFilter}
         searchFilm={searchFilm}
         filterMovies={filterMovies}
+        errorSearch={errorSearch}
       />
       {
         isLoading ? <Preloader /> : (
@@ -27,11 +28,12 @@ function SavedMovies({
             handleDeleteMovie={handleDeleteMovie}
             isSavedFilm={isSavedFilm}
             searchFilm={searchFilm}
+            moviesMessage={moviesMessage}
           />
         )
       }
       {
-        displayMoviesList.length === 0 ? <p className="saved-movies__message">У вас нет сохраненных фильмов</p> : ''
+        (displayMoviesList.length === 0 && !moviesMessage) ? <p p className="saved-movies__message">У вас нет сохраненных фильмов</p> : ''
       }
     </section>
   );

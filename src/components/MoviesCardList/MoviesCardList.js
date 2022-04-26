@@ -47,7 +47,7 @@ function MoviesCardList(props) {
             .slice(0, location.pathname === '/saved-movies' ? props.movies.length : renderedCardsCount)
             .map((movie) => (
               <MoviesCard
-                saved={props.isSavedFilm(movie.id ? movie.id : movie.movieId)} // TODO удалить и посмотреть, так как фильтрация проходит в app 340
+                saved={props.isSavedFilm(movie.id ? movie.id : movie.movieId)}
                 key={movie.id ? movie.id : movie.movieId}
                 movie={movie}
                 handleSaveMovie={props.handleSaveMovie}
@@ -58,7 +58,7 @@ function MoviesCardList(props) {
         }
       </ul>
       {
-        (props.moviesMessage && location.pathname === '/movies') ? <p>{props.moviesMessage}</p> : ''
+        (props.moviesMessage) ? <p>{props.moviesMessage}</p> : ''
       }
       {
         (renderedCardsCount < props.movies.length && location.pathname === '/movies')
