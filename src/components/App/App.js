@@ -98,7 +98,8 @@ function App() {
   }
 
   function isSavedFilm(id) {
-    return savedMovies ? savedMovies.some((m) => m.movieId === id) : true;
+    const result = savedMovies.some((m) => m.movieId === id);
+    return result;
   }
 
   function updateWidth() {
@@ -244,11 +245,14 @@ function App() {
       .deleteMovie(deletedMovie._id)
       .then(() => {
         const newSavedMoviesList = savedMovies
-          .filter((film) => film.movieId !== deletedMovie.movieId);
-        console.log(newSavedMoviesList);
+          .filter((film) => (film.movieId !== deletedMovie.movieId
+            ? deletedMovie.movieId : deletedMovie.id));
+
+        setSavedMovies(newSavedMoviesList);
 
         const newSavedMoviesListDisplay = displayMoviesListSaved
-          .filter((film) => film.movieId !== deletedMovie.movieId);
+          .filter((film) => (film.movieId !== deletedMovie.movieId
+            ? deletedMovie.movieId : deletedMovie.id));
         setDisplayMoviesListSaved(newSavedMoviesListDisplay);
       })
       .catch((err) => {
