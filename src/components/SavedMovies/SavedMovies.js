@@ -8,7 +8,7 @@ import Preloader from '../Preloader/Preloader';
 function SavedMovies({
   isLoading, handleDeleteMovie, handleFilterMovies, searchFilm, errorSearch,
   handleFilterMoviesType, typeFilmFilter, width, displayMoviesList, isSavedFilm, moviesMessage,
-  filterMovies,
+  filterMovies, savedMovies,
 }) {
   return (
     <section className="saved-movies">
@@ -33,7 +33,7 @@ function SavedMovies({
         )
       }
       {
-        (displayMoviesList.length === 0 && !moviesMessage) ? <p p className="saved-movies__message">У вас нет сохраненных фильмов</p> : ''
+        (savedMovies.length === 0 && !moviesMessage) ? <p p className="saved-movies__message">У вас нет сохраненных фильмов</p> : ''
       }
     </section>
   );

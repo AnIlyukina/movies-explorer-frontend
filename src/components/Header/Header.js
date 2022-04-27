@@ -31,6 +31,7 @@ function Header({ width, loggedIn, signOut }) {
 
         {loggedIn && (
           <BurgerMenu
+            signOut={signOut}
             isOpen={isBurgerMenuOpen}
             onClose={handleBurgerMenuClick}
           />

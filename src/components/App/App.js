@@ -85,6 +85,7 @@ function App() {
     }
     setErrorSearch('Введите ключевое слово');
     setDisplayMoviesListSaved(filtered);
+    saveToLocalStorage(filtered, true);
     setIsLoading(false);
     return displayMoviesList;
   }
@@ -190,6 +191,7 @@ function App() {
           setIsErrorStatus(false);
           setMessageInfoTooltip('До свидания!!! Будем ждать вас снова');
           localStorage.removeItem('movies');
+          localStorage.removeItem('savedMovies');
           onCloseMessageInfo();
           history.push('/');
         })
@@ -231,6 +233,7 @@ function App() {
   }
 
   const checkToken = useCallback(() => {
+    setIsLoading(true);
     api
       .getAuthStatus().then((res) => {
         if (res) {
@@ -238,6 +241,9 @@ function App() {
         }
       }).catch(() => {
         setLoggedIn(false);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [history]);
 
@@ -268,6 +274,7 @@ function App() {
         const newSavedMoviesListDisplay = displayMoviesListSaved
           .filter((film) => (film.movieId !== deletedMovie.movieId
             ? deletedMovie.movieId : deletedMovie.id));
+
         setDisplayMoviesListSaved(newSavedMoviesListDisplay);
       })
       .catch((err) => {
@@ -291,6 +298,21 @@ function App() {
     }
   }
 
+  function getLocalStorageMovies() {
+    if (localStorage.getItem('movies')) {
+      const saved = JSON.parse(localStorage.getItem('movies'));
+      setDisplayMoviesList(saved.movies);
+      setSearchFilter(saved.searchFilter);
+      setTypeFilmFilter(saved.typeFilmFilter);
+    }
+    if (localStorage.getItem('savedMovies')) {
+      const saved = JSON.parse(localStorage.getItem('savedMovies'));
+      setDisplayMoviesListSaved(saved.movies);
+      setSearchFilterSavedMovies(saved.searchFilter);
+      setTypeFilmFilterSavedMovies(saved.typeFilmFilter);
+    }
+  }
+
   useEffect(async () => {
     checkToken();
     if (loggedIn) {
@@ -301,25 +323,19 @@ function App() {
         const allMovies = await getMovies();
         const allSavedMovies = await getSavedMovies();
 
+        setMovies(allMovies);
+        setSavedMovies(allSavedMovies);
         setCurrentUser(user);
         setIsInfoTooltipOpen(true);
         setIsErrorStatus(false);
         setMessageInfoTooltip('Добро пожаловать !!! :)');
-        onCloseMessageInfo();
+        getLocalStorageMovies();
 
-        console.log(allMovies);
-        console.log(allSavedMovies);
-
-        setMovies(allMovies);
-        setSavedMovies(allSavedMovies);
-
-        if (localStorage.getItem('movies')) {
-          const saved = JSON.parse(localStorage.getItem('movies'));
-          setDisplayMoviesList(saved.movies);
-          setSearchFilter(saved.searchFilter);
-          setTypeFilmFilter(saved.typeFilmFilter);
+        if (localStorage.getItem('savedMovies') === null) {
+          setDisplayMoviesListSaved(allSavedMovies);
         }
 
+        onCloseMessageInfo();
         history.push('/movies');
       } catch {
         console.log('c');
@@ -391,6 +407,7 @@ function App() {
             handleFilterMoviesType={setTypeFilmFilterSavedMovies}
             isSavedFilm={isSavedFilm}
             searchFilm={searchFilterSavedMovies}
+            savedMovies={savedMovies}
             filterMovies={filterSaveMovies}
             moviesMessage={moviesMessage}
             errorSearch={errorSearch}

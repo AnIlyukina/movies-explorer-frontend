@@ -5,33 +5,33 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './BurgerMenu.css';
 
-function BurgerMenu(props) {
+function BurgerMenu({ isOpen, signOut, onClose }) {
   return (
-    <section className={`burger-menu ${props.isOpen ? 'burger-menu_opened' : ''}`}>
+    <section className={`burger-menu ${isOpen ? 'burger-menu_opened' : ''}`}>
       <button
         className="burger-menu__close-button"
-        onClick={props.onClose}
+        onClick={onClose}
       />
       <div className="burger_menu__movies-links">
         <NavLink
           exact
           to="/"
           className="burger_menu__movies-link"
-          onClick={props.onClose}
+          onClick={signOut}
         >
           Главная
         </NavLink>
         <NavLink
           to="/movies"
           className="burger_menu__movies-link"
-          onClick={props.onClose}
+          onClick={onClose}
         >
           Фильмы
         </NavLink>
         <NavLink
           to="/saved-movies"
           className="burger_menu__movies-link"
-          onClick={props.onClose}
+          onClick={onClose}
         >
           Сохраненные фильмы
         </NavLink>
@@ -41,14 +41,14 @@ function BurgerMenu(props) {
           <NavLink
             to="/profile"
             className="header__link header__link_type_profile"
-            onClick={props.onClose}
+            onClick={onClose}
           >
             Аккаунт
           </NavLink>
           <NavLink
             to="/profile"
             className="header__icon-account"
-            onClick={props.onClose}
+            onClick={onClose}
           />
         </div>
       </div>
