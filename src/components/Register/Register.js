@@ -11,13 +11,37 @@ import HeaderLogoLink from '../HeaderLogoLink/HeaderLogoLink';
 import useForm from '../../Hooks/useForm';
 
 function Register(props) {
+  const [isValid, setIsValid] = React.useState(false);
   const {
-    handleChange, values, errors, isValid,
+    name,
+    email,
+    password,
+    nameError,
+    emailError,
+    passwordError,
+    handleChangePassword,
+    handleChangeEmail,
+    handleChangeName,
   } = useForm();
+
+  React.useEffect(() => {
+    if (
+      name
+      && email
+      && password
+      && !nameError
+      && !emailError
+      && !passwordError
+    ) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [name, email, password, nameError, emailError, passwordError]);
 
   function handleSubmit(event) {
     event.preventDefault();
-    props.handleSubmitRegister(values.userName, values.email, values.password);
+    props.handleSubmitRegister(name, email, password);
   }
 
   return (
@@ -40,10 +64,10 @@ function Register(props) {
               autoComplete="off"
               required
               minLength="2"
-              value={values.userName || ''}
-              onChange={handleChange}
+              value={name || ''}
+              onChange={handleChangeName}
             />
-            <span className="register__error">{errors.userName}</span>
+            <span className="register__error">{nameError}</span>
           </label>
           <label
             className="redister__label"
@@ -58,10 +82,10 @@ function Register(props) {
               className="register__input register__input_type_email"
               autoComplete="off"
               required
-              value={values.email || ''}
-              onChange={handleChange}
+              value={email || ''}
+              onChange={handleChangeEmail}
             />
-            <span className="register__error">{errors.email}</span>
+            <span className="register__error">{emailError}</span>
           </label>
           <label className="redister__label">
             Пароль
@@ -73,10 +97,10 @@ function Register(props) {
               autoComplete="off"
               required
               minLength="8"
-              value={values.password || ''}
-              onChange={handleChange}
+              value={password || ''}
+              onChange={handleChangePassword}
             />
-            <span className="register__error">{errors.password}</span>
+            <span className="register__error">{passwordError}</span>
           </label>
         </div>
         <div>

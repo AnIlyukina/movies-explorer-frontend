@@ -9,13 +9,32 @@ import HeaderLogoLink from '../HeaderLogoLink/HeaderLogoLink';
 import useForm from '../../Hooks/useForm';
 
 function Login(props) {
+  const [isValid, setIsValid] = React.useState(false);
   const {
-    handleChange, values, errors, isValid,
+    email,
+    password,
+    emailError,
+    passwordError,
+    handleChangeEmail,
+    handleChangePassword,
   } = useForm();
+
+  React.useEffect(() => {
+    if (
+      email
+      && password
+      && !passwordError
+      && !emailError
+    ) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [email, emailError, password, passwordError]);
 
   function handleSubmit(event) {
     event.preventDefault();
-    props.handleSubmitLogin(values.login, values.password);
+    props.handleSubmitLogin(email, password);
   }
 
   return (
@@ -37,10 +56,10 @@ function Login(props) {
               className="login__input login__input_type_email"
               autoComplete="off"
               required
-              value={values.login || ''}
-              onChange={handleChange}
+              value={email || ''}
+              onChange={handleChangeEmail}
             />
-            <span className="login__error">{errors.login}</span>
+            <span className="login__error">{emailError}</span>
           </label>
           <label
             htmlFor="login-password"
@@ -55,10 +74,10 @@ function Login(props) {
               autoComplete="off"
               required
               minLength="8"
-              value={values.password || ''}
-              onChange={handleChange}
+              value={password || ''}
+              onChange={handleChangePassword}
             />
-            <span className="login__error">{errors.password}</span>
+            <span className="login__error">{passwordError}</span>
           </label>
         </div>
         <div>

@@ -330,9 +330,11 @@ function App() {
     if (loggedIn) {
       setIsLoading(true);
       try {
+        const user = await api.getUserInfo();
         const allMovies = await getMovies();
         const allSavedMovies = await getSavedMovies();
 
+        setCurrentUser(user);
         setMovies(allMovies);
         setSavedMovies(allSavedMovies);
         getLocalStorageMovies();

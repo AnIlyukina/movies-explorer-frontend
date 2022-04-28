@@ -13,26 +13,48 @@ import useForm from '../../Hooks/useForm';
 function Profile({ onUpdateUser, signOut }) {
   const currentUser = React.useContext(CurrentUserContext);
 
+  const [isValid, setIsValid] = React.useState(false);
+
   const {
-    handleChange, values, errors, isValid, setValues, setErrors,
+    name,
+    email,
+    nameError,
+    emailError,
+    handleChangeEmail,
+    handleChangeName,
+    setName,
+    setEmail,
+    setNameError,
+    setEmailError,
   } = useForm();
 
   function handleSubmit(event) {
     event.preventDefault();
     onUpdateUser({
-      name: values.userName,
-      email: values.email,
+      name,
+      email,
     });
   }
 
   React.useEffect(() => {
-    setValues({
-      ...values,
-      userName: currentUser.name,
-      email: currentUser.email,
-    });
-    setErrors({});
-  }, []);
+    if (
+      name
+      && email
+      && !nameError
+      && !emailError
+    ) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [name, email, nameError, emailError]);
+
+  React.useEffect(() => {
+    setName(currentUser.name);
+    setEmail(currentUser.email);
+    setNameError('');
+    setEmailError('');
+  }, [currentUser]);
 
   return (
     <section className="profile">
@@ -56,12 +78,12 @@ function Profile({ onUpdateUser, signOut }) {
             required
             className="profile__input"
             minLength="2"
-            value={values.userName || ''}
-            onChange={handleChange}
+            value={name || ''}
+            onChange={handleChangeName}
 
           />
         </label>
-        <span className="register__error">{errors.userName}</span>
+        <span className="register__error">{nameError}</span>
         <label
           htmlFor="profile-email"
           className="profile__label"
@@ -74,17 +96,17 @@ function Profile({ onUpdateUser, signOut }) {
             autoComplete="off"
             required
             className="profile__input"
-            value={values.email || ''}
-            onChange={handleChange}
+            value={email || ''}
+            onChange={handleChangeEmail}
           />
         </label>
-        <span className="register__error">{errors.email}</span>
+        <span className="register__error">{emailError}</span>
         <button
           onClick={handleSubmit}
           className={`profile__button ${!isValid ? 'profile__button_disabled' : ''}`}
           disabled={!isValid
-            || (values.userName === currentUser.name
-              && values.email === currentUser.email)}
+            || (name === currentUser.name
+              && email === currentUser.email)}
           type="submit"
         >
           Редактировать
