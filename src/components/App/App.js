@@ -22,6 +22,7 @@ import NotFound from '../NotFound/NotFound';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { getAllMovies } from '../../utils/MoviesApi';
 import api from '../../utils/MainApi';
+import { MAX_LENGTH_SHORT_FILM } from '../../utils/config';
 
 function App() {
   const history = useHistory();
@@ -71,46 +72,51 @@ function App() {
     localStorage.setItem(savedMoviesSaving ? 'savedMovies' : 'movies', JSON.stringify(paramsToSave));
   }
 
-  function filterSaveMovies() {
-    setIsLoading(true);
-    let filtered = [];
-    if (searchFilterSavedMovies) {
-      filtered = savedMovies.filter((m) => m.nameRU.toLowerCase()
-        .includes(searchFilterSavedMovies.toLowerCase())
-        && (typeFilmFilterSavedMovies ? m.duration <= 40 : m.duration > 40));
-      setErrorSearch('');
-    }
-    if (filtered.length === 0) {
+  function checkLengthFiltered(filmsFiltered) {
+    if (filmsFiltered.length === 0) {
       setMoviesMessage('По вашему запросу ничего не найдено');
     } else {
       setMoviesMessage('');
     }
-    setErrorSearch('Введите ключевое слово');
-    setDisplayMoviesListSaved(filtered);
-    saveToLocalStorage(filtered, true);
-    setIsLoading(false);
-    return displayMoviesList;
+  }
+
+  function filterSaveMovies() {
+    let filtered = [];
+    if (searchFilterSavedMovies) {
+      setIsLoading(true);
+      filtered = savedMovies.filter((m) => m.nameRU.toLowerCase()
+        .includes(searchFilterSavedMovies.toLowerCase())
+        && (typeFilmFilterSavedMovies
+          ? m.duration <= MAX_LENGTH_SHORT_FILM
+          : m.duration > MAX_LENGTH_SHORT_FILM));
+      checkLengthFiltered();
+      setTimeout(() => { setIsLoading(false); }, 1000);
+      setDisplayMoviesListSaved(filtered);
+      saveToLocalStorage(filtered, true);
+      setErrorSearch('');
+    } else {
+      setErrorSearch('Введите ключевое слово');
+      setDisplayMoviesListSaved(savedMovies);
+    }
   }
 
   function filterMovies() {
-    setIsLoading(true);
     if (searchFilter) {
+      setIsLoading(true);
       const filtered = movies.filter((m) => m.nameRU.toLowerCase()
         .includes(searchFilter.toLowerCase())
-        && (typeFilmFilter ? m.duration <= 40 : m.duration > 40));
-      if (filtered.length === 0) {
-        setMoviesMessage('По вашему запросу ничего не найдено');
-      } else {
-        setMoviesMessage('');
-      }
-      setIsLoading(false);
+        && (typeFilmFilter
+          ? m.duration <= MAX_LENGTH_SHORT_FILM
+          : m.duration > MAX_LENGTH_SHORT_FILM));
+
+      checkLengthFiltered();
+      setTimeout(() => { setIsLoading(false); }, 1000);
       setDisplayMoviesList(filtered);
       saveToLocalStorage(filtered);
       setErrorSearch('');
       return displayMoviesList;
     }
     setErrorSearch('Введите ключевое слово');
-    setIsLoading(false);
     return [];
   }
 
@@ -136,8 +142,7 @@ function App() {
     setIsLoading(true);
     api
       .authorize(login, password)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         setLoggedIn(true);
         history.push('/movies');
         setIsInfoTooltipOpen(true);
@@ -145,8 +150,7 @@ function App() {
         setMessageInfoTooltip('Добро пожаловать!!!');
         onCloseMessageInfo();
       })
-      .catch((response) => {
-        console.log(response);
+      .catch(() => {
         setMessageInfoTooltip('Не удалось войти в аккаунт');
         setIsErrorStatus(true);
         setIsInfoTooltipOpen(true);
@@ -154,7 +158,6 @@ function App() {
         setTimeout(() => { setIsInfoTooltipOpen(false); }, 2000);
       })
       .finally(() => {
-        console.log('конец');
         setIsLoading(false);
       });
   }
@@ -192,13 +195,19 @@ function App() {
           setIsInfoTooltipOpen(true);
           setIsErrorStatus(false);
           setMessageInfoTooltip('До свидания!!! Будем ждать вас снова');
+          setSearchFilter('');
+          setSearchFilterSavedMovies('');
+          setDisplayMoviesList([]);
+          setDisplayMoviesListSaved([]);
+          setTypeFilmFilter(0);
+          setTypeFilmFilterSavedMovies(0);
           localStorage.removeItem('movies');
           localStorage.removeItem('savedMovies');
           onCloseMessageInfo();
           history.push('/');
         })
         .catch(() => {
-          setMessageInfoTooltip('Произошла ошибка');
+          setMessageInfoTooltip('Произошла ошибка при выходе');
           setIsErrorStatus(true);
           setIsInfoTooltipOpen(true);
           onCloseMessageInfo();
@@ -213,7 +222,6 @@ function App() {
 
   function handleUpdateUser(userInfo) {
     setIsLoading(true);
-    console.log(userInfo);
     api
       .updateUserInfo(userInfo)
       .then((newUserInfo) => {
@@ -240,7 +248,6 @@ function App() {
     api
       .getAuthStatus().then((res) => {
         if (res) {
-          console.log(res);
           setLoggedIn(true);
           setCurrentUser(res);
           if (path === '/sign-in' || path === '/sign-up') {
@@ -267,25 +274,29 @@ function App() {
   async function getSavedMovies() {
     const allSavedMovies = await api.getSavedMovies();
     setSavedMovies(allSavedMovies);
+    setDisplayMoviesListSaved(allSavedMovies);
     return allSavedMovies;
   }
 
-  function handleDeleteMovie(movie) {
-    const deletedMovie = savedMovies
-      .find((item) => (item.movieId === movie.movieId ? movie.movieId : movie.id));
+  function handleDeleteMovie(movie, deleteMoviesSaving = false) {
+    let deletedMovie = [];
+    if (deleteMoviesSaving) {
+      deletedMovie = savedMovies
+        .find((item) => (item.movieId === movie.movieId));
+    } else {
+      deletedMovie = savedMovies
+        .find((item) => (item.movieId === movie.id));
+    }
     api
       .deleteMovie(deletedMovie._id)
       .then(() => {
-        // const newSavedMoviesList = savedMovies
-        //   .filter((film) => (film.movieId !== deletedMovie.movieId
-        //     ? deletedMovie.movieId : deletedMovie.id));
-
-        // setSavedMovies(newSavedMoviesList);
-        const newSavedMoviesListDisplay = displayMoviesListSaved
+        const newSavedMoviesList = savedMovies
           .filter((film) => (film.movieId !== deletedMovie.movieId
             ? deletedMovie.movieId : deletedMovie.id));
 
-        setDisplayMoviesListSaved(newSavedMoviesListDisplay);
+        setSavedMovies(newSavedMoviesList);
+
+        setDisplayMoviesListSaved(newSavedMoviesList);
       })
       .catch((err) => {
         (console.log(err));
@@ -294,7 +305,6 @@ function App() {
 
   function handleSaveMovie(movie) {
     if (savedMovies.find((savedMovie) => savedMovie.movieId === movie.id)) {
-      console.log('d');
       handleDeleteMovie(movie);
     } else {
       api
@@ -350,6 +360,8 @@ function App() {
       } finally {
         setIsLoading(false);
       }
+    } else {
+      history.push('/');
     }
   }, [loggedIn]);
 

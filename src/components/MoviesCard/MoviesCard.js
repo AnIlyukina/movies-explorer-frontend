@@ -16,7 +16,11 @@ function MoviesCard({
   }
 
   function deleteMovie() {
-    handleDeleteMovie(movie);
+    let checkLocation = false;
+    if (location.pathname === '/saved-movies') {
+      checkLocation = true;
+    }
+    handleDeleteMovie(movie, checkLocation);
   }
 
   function onTraileerLink() {
