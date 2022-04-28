@@ -6,7 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import HeaderLogoLink from '../HeaderLogoLink/HeaderLogoLink';
 
-function Header({ width, loggedIn, signOut }) {
+function Header({ width, loggedIn }) {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState(false);
 
   const isMobile = width <= 768;
@@ -17,7 +17,7 @@ function Header({ width, loggedIn, signOut }) {
 
   return (
     <header className={`${!loggedIn ? 'header' : 'header header_type_auth'}`}>
-      <HeaderLogoLink signOut={signOut} />
+      <HeaderLogoLink />
       <nav className="header__links">
 
         {loggedIn && isMobile && (
@@ -31,7 +31,6 @@ function Header({ width, loggedIn, signOut }) {
 
         {loggedIn && (
           <BurgerMenu
-            signOut={signOut}
             isOpen={isBurgerMenuOpen}
             onClose={handleBurgerMenuClick}
           />

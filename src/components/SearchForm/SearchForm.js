@@ -2,7 +2,6 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import './SearchForm.css';
 import searchIcon from '../../images/icon__search.svg';
@@ -35,6 +34,7 @@ function SearchForm(props) {
         />
         <button
           type="button"
+          aria-label="filter"
           className="search-form__button"
           onClick={props.filterMovies}
         />

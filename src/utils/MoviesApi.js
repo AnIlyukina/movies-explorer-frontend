@@ -1,3 +1,6 @@
+/* eslint-disable import/named */
+import { MOVIES_API } from './config';
+
 const getServerResponse = (response) => {
   if (response.ok) {
     return response.json();
@@ -5,7 +8,7 @@ const getServerResponse = (response) => {
   return Promise.reject(new Error(`Ошибка: ${response.status}`));
 };
 
-export const getAllMovies = () => fetch('https://api.nomoreparties.co/beatfilm-movies', {
+export const getAllMovies = () => fetch(MOVIES_API, {
   headers: {
     'Content-Type': 'application/json',
   },

@@ -5,7 +5,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './BurgerMenu.css';
 
-function BurgerMenu({ isOpen, signOut, onClose }) {
+function BurgerMenu({ isOpen, onClose }) {
   return (
     <section className={`burger-menu ${isOpen ? 'burger-menu_opened' : ''}`}>
       <button
@@ -17,7 +17,7 @@ function BurgerMenu({ isOpen, signOut, onClose }) {
           exact
           to="/"
           className="burger_menu__movies-link"
-          onClick={signOut}
+          onClick={onClose}
         >
           Главная
         </NavLink>

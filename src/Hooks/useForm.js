@@ -1,11 +1,11 @@
-import React from 'react';
+import { useState } from 'react';
 
 const useForm = () => {
-  const [values, setValues] = React.useState({});
+  const [values, setValues] = useState({});
 
-  const [errors, setErrors] = React.useState({});
+  const [errors, setErrors] = useState({});
 
-  const [isValid, setIsValid] = React.useState(false);
+  const [isValid, setIsValid] = useState(false);
 
   const handleChange = (e) => {
     const { name } = e.target;
@@ -33,6 +33,60 @@ const useForm = () => {
     setErrors,
     setIsValid,
   };
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [nameError, setNameError] = useState('');
+  // const [emailError, setEmailError] = useState('');
+  // const [passwordError, setPasswordError] = useState('');
+
+  // function handleChangeName(e) {
+  //   const validName = /^[a-zA-Z- ]+$/.test(e.target.value);
+
+  //   if (e.target.value.length < 2) {
+  //     setNameError('Длина имени должна быть не менее 2 символов');
+  //   } else if (e.target.value.length > 30) {
+  //     setNameError('Длина имени должна должна быть не более 30 символов');
+  //   } else if (!validName) {
+  //     setNameError('Имя должно быть указано латиницей');
+  //   } else {
+  //     setNameError('');
+  //   }
+  //   setName(e.target.value);
+  // }
+
+  // function handleChangeEmail(e) {
+  //   const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(
+  //     e.target.value,
+  //   );
+
+  //   if (!validEmail) {
+  //     setEmailError('Неверный формат почты');
+  //   } else {
+  //     setEmailError('');
+  //   }
+  //   setEmail(e.target.value);
+  // }
+
+  // function handleChangePassword(e) {
+  //   if (e.target.value.length < 6) {
+  //     setPasswordError('Пароль должен быть не менее 6 символов');
+  //   } else {
+  //     setPasswordError('');
+  //   }
+  //   setPassword(e.target.value);
+  // }
+  // return {
+  //   name,
+  //   email,
+  //   password,
+  //   nameError,
+  //   emailError,
+  //   passwordError,
+  //   handleChangePassword,
+  //   handleChangeEmail,
+  //   handleChangeName,
+  // };
 };
 
 export default useForm;

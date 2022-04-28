@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unreachable */
 /* eslint-disable class-methods-use-this */
+import { BASE_URL } from './config';
+
 class MainApi {
   constructor(option) {
     this._baseUrl = option.baseUrl;
@@ -114,7 +116,7 @@ class MainApi {
 }
 
 const api = new MainApi({
-  baseUrl: 'https://api.moviesil.nomoredomains.work',
+  baseUrl: BASE_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

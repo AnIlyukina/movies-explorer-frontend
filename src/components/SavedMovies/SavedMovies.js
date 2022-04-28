@@ -33,7 +33,7 @@ function SavedMovies({
         )
       }
       {
-        (savedMovies.length === 0 && !moviesMessage) ? <p p className="saved-movies__message">У вас нет сохраненных фильмов</p> : ''
+        (savedMovies.length === 0 && !moviesMessage) ? <p className="saved-movies__message">У вас нет сохраненных фильмов</p> : ''
       }
     </section>
   );

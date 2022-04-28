@@ -9,6 +9,11 @@ import React from 'react';
 import './MoviesCardList.css';
 import { useLocation } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import {
+  ADDED_CARD_COUNT_DESCTOP, RENDERED_CARD_COUNT_DESCTOP,
+  ADDED_CARD_COUNT_TABLET, RENDERED_CARD_COUNT_TABLET,
+  ADDED_CARD_COUNT_MOBILE, RENDERED_CARD_COUNT_MOBILE,
+} from '../../utils/config';
 
 function MoviesCardList(props) {
   const location = useLocation();
@@ -18,14 +23,14 @@ function MoviesCardList(props) {
 
   function cardsCount() {
     if (props.width >= 1100) {
-      setRenderedCardsCount(12);
-      setAddedCardsCount(3);
+      setRenderedCardsCount(RENDERED_CARD_COUNT_DESCTOP);
+      setAddedCardsCount(ADDED_CARD_COUNT_DESCTOP);
     } else if (props.width < 1200 && props.width > 600) {
-      setRenderedCardsCount(8);
-      setAddedCardsCount(2);
+      setRenderedCardsCount(RENDERED_CARD_COUNT_TABLET);
+      setAddedCardsCount(ADDED_CARD_COUNT_TABLET);
     } else {
-      setRenderedCardsCount(5);
-      setAddedCardsCount(2);
+      setRenderedCardsCount(RENDERED_CARD_COUNT_MOBILE);
+      setAddedCardsCount(ADDED_CARD_COUNT_MOBILE);
     }
   }
 

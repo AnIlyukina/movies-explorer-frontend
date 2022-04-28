@@ -4,9 +4,9 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-console */
 import './App.css';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Route, Switch, withRouter, useHistory,
+  Route, Switch, withRouter, useHistory, useLocation,
 } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
@@ -25,6 +25,8 @@ import api from '../../utils/MainApi';
 
 function App() {
   const history = useHistory();
+
+  const location = useLocation();
 
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -232,20 +234,29 @@ function App() {
       });
   }
 
-  const checkToken = useCallback(() => {
+  useEffect(() => {
+    const path = location.pathname;
     setIsLoading(true);
     api
       .getAuthStatus().then((res) => {
         if (res) {
+          console.log(res);
           setLoggedIn(true);
+          setCurrentUser(res);
+          if (path === '/sign-in' || path === '/sign-up') {
+            history.push('/movies');
+          } else {
+            history.push(path);
+          }
         }
       }).catch(() => {
         setLoggedIn(false);
+        history.push('/');
       })
       .finally(() => {
         setIsLoading(false);
       });
-  }, [history]);
+  }, []);
 
   async function getMovies() {
     const allMovies = await getAllMovies();
@@ -265,12 +276,11 @@ function App() {
     api
       .deleteMovie(deletedMovie._id)
       .then(() => {
-        const newSavedMoviesList = savedMovies
-          .filter((film) => (film.movieId !== deletedMovie.movieId
-            ? deletedMovie.movieId : deletedMovie.id));
+        // const newSavedMoviesList = savedMovies
+        //   .filter((film) => (film.movieId !== deletedMovie.movieId
+        //     ? deletedMovie.movieId : deletedMovie.id));
 
-        setSavedMovies(newSavedMoviesList);
-
+        // setSavedMovies(newSavedMoviesList);
         const newSavedMoviesListDisplay = displayMoviesListSaved
           .filter((film) => (film.movieId !== deletedMovie.movieId
             ? deletedMovie.movieId : deletedMovie.id));
@@ -292,8 +302,11 @@ function App() {
         .then(() => {
           getSavedMovies();
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          setMessageInfoTooltip('Не удалось сохранить фильм');
+          setIsInfoTooltipOpen(true);
+          setIsErrorStatus(true);
+          onCloseMessageInfo();
         });
     }
   }
@@ -314,31 +327,20 @@ function App() {
   }
 
   useEffect(async () => {
-    checkToken();
     if (loggedIn) {
-      console.log('c');
       setIsLoading(true);
       try {
-        const user = await api.getUserInfo();
         const allMovies = await getMovies();
         const allSavedMovies = await getSavedMovies();
 
         setMovies(allMovies);
         setSavedMovies(allSavedMovies);
-        setCurrentUser(user);
-        setIsInfoTooltipOpen(true);
-        setIsErrorStatus(false);
-        setMessageInfoTooltip('Добро пожаловать !!! :)');
         getLocalStorageMovies();
 
         if (localStorage.getItem('savedMovies') === null) {
           setDisplayMoviesListSaved(allSavedMovies);
         }
-
-        onCloseMessageInfo();
-        history.push('/movies');
       } catch {
-        console.log('c');
         setMessageInfoTooltip('Вы не акторизованы :(');
         setIsInfoTooltipOpen(true);
         setIsErrorStatus(true);
@@ -352,12 +354,10 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
-
         <Route exact path={['/', '/movies', '/saved-movies', '/profile']}>
           <Header
             loggedIn={loggedIn}
             width={width}
-            signOut={signOut}
           />
         </Route>
 
