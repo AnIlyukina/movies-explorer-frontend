@@ -89,7 +89,7 @@ function App() {
         && (typeFilmFilterSavedMovies
           ? m.duration <= MAX_LENGTH_SHORT_FILM
           : m.duration > MAX_LENGTH_SHORT_FILM));
-      checkLengthFiltered();
+      checkLengthFiltered(filtered);
       setTimeout(() => { setIsLoading(false); }, 1000);
       setDisplayMoviesListSaved(filtered);
       saveToLocalStorage(filtered, true);
@@ -101,15 +101,16 @@ function App() {
   }
 
   function filterMovies() {
+    let filtered = [];
     if (searchFilter) {
       setIsLoading(true);
-      const filtered = movies.filter((m) => m.nameRU.toLowerCase()
+      filtered = movies.filter((m) => m.nameRU.toLowerCase()
         .includes(searchFilter.toLowerCase())
         && (typeFilmFilter
           ? m.duration <= MAX_LENGTH_SHORT_FILM
           : m.duration > MAX_LENGTH_SHORT_FILM));
 
-      checkLengthFiltered();
+      checkLengthFiltered(filtered);
       setTimeout(() => { setIsLoading(false); }, 1000);
       setDisplayMoviesList(filtered);
       saveToLocalStorage(filtered);
