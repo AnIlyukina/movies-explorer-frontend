@@ -1,12 +1,20 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import './SearchForm.css';
 import searchIcon from '../../images/icon__search.svg';
 
-function SearchForm() {
+function SearchForm(props) {
+  function handleChange(e) {
+    props.handleFilterMovies(e.target.value);
+  }
+
+  function handleChangeTypeFilm(e) {
+    props.handleFilterMoviesType(+e.target.value);
+  }
+
   return (
     // eslint-disable-next-line react/jsx-indent
     <form type="submit" className="search-form">
@@ -19,10 +27,17 @@ function SearchForm() {
         <input
           className="search-form__search-input"
           type="text"
-          placeholder="Фильм"
+          placeholder={props.errorSearch ? props.errorSearch : 'Фильм'}
           required
+          value={props.searchFilm || ''}
+          onChange={handleChange}
         />
-        <button type="button" className="search-form__button" />
+        <button
+          type="button"
+          aria-label="filter"
+          className="search-form__button"
+          onClick={props.filterMovies}
+        />
       </div>
       <div className="search-form__block-type">
         <div className="search-form__border" />
@@ -34,8 +49,10 @@ function SearchForm() {
             className="search-form__range-input"
             type="range"
             name="filmType"
-            min="1"
-            max="2"
+            min={0}
+            max={1}
+            value={props.typeFilmFilter}
+            onChange={handleChangeTypeFilm}
             required
           />
         </label>
