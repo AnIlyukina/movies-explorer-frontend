@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.movies-ilyukina.ru';
+export const BASE_URL = 'https://apidiplom.ilyukina.ru';
 export const MOVIES_API = 'https://api.nomoreparties.co/beatfilm-movies';
 // export const BASE_URL = 'http://localhost:3000';
 
